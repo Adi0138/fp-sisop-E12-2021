@@ -12,7 +12,7 @@
 int main(int argc, char **argv)
 {
 	int check;
-	char input[] = "DROP DATABASE testing_database";
+	char input[] = "DROP TABLE tabel";
 	char* command = strtok(input, " ");
 	char* firstCommand = command;
 	command = strtok(NULL, " ");
@@ -57,6 +57,7 @@ int main(int argc, char **argv)
     	printf("%s\n", getcwd(s, 100));
 	}
 	
+	//drop database
 	else if (strcmp(firstCommand, "DROP")== 0 && strcmp(type, "DATABASE") == 0){
 
 		command = strtok(NULL, " ");
@@ -72,5 +73,26 @@ int main(int argc, char **argv)
 			printf("Directory Doesn't Exist");
 		}
 	}
-	
+
+	//create table
+	else if (strcmp(firstCommand, "CREATE")== 0 && strcmp(type, "TABLE") == 0){
+		command = strtok(NULL, " ");
+		char* dirname = command;
+		char filename[100];
+		sprintf(filename,"%s.txt",dirname);
+		chdir("/home/adiperwira/Documents/sisop/fp/database/testing");
+		FILE *fp;
+		fp  = fopen (filename, "w");
+	}
+
+	//drop table
+	else if (strcmp(firstCommand, "DROP")== 0 && strcmp(type, "TABLE") == 0){
+
+		command = strtok(NULL, " ");
+		char* dirname = command;
+		char filename [100];
+		sprintf(filename,"%s.txt",dirname);
+		chdir("/home/adiperwira/Documents/sisop/fp/database/testing");
+		remove(filename);		
+	}
 }
